@@ -1,0 +1,17 @@
+[
+  {
+    "id" : 1,
+    "name" : "Java dasturlash tili",
+    "price" : 300000,
+    "imageUrl" : "https://drive.google.com/file/d/16yAKcDuRr8xt70W9YOvKe0GLJeZgkCqy/view?usp=sharing",
+    "durationTime" : "6 oy"
+  },
+  {
+    "id" : 2,
+    "name" : "C# dasturlash tili",
+    "price" : 300000,
+    "imageUrl" : "https://drive.google.com/file/d/1ZouoV4gq_Lb4eYQY2KXABpp6Tzcqzk25/view?usp=sharing",
+    "durationTime" : "6 oy"
+  }
+
+]
