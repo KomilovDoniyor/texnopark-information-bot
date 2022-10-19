@@ -1,17 +1,34 @@
 [
   {
-    "id" : 1,
-    "name" : "Java dasturlash tili",
-    "price" : 300000,
-    "imageUrl" : "https://drive.google.com/file/d/16yAKcDuRr8xt70W9YOvKe0GLJeZgkCqy/view?usp=sharing",
-    "durationTime" : "6 oy"
+    "id": 1,
+    "categoryId": 1,
+    "name": "Java",
+    "price" : 300000.0,
+    "imageUrl": "https://drive.google.com/file/d/16yAKcDuRr8xt70W9YOvKe0GLJeZgkCqy/view?usp=sharing",
+    "description": "For Java"
   },
   {
-    "id" : 2,
-    "name" : "C# dasturlash tili",
-    "price" : 300000,
-    "imageUrl" : "https://drive.google.com/file/d/1ZouoV4gq_Lb4eYQY2KXABpp6Tzcqzk25/view?usp=sharing",
-    "durationTime" : "6 oy"
+    "id": 2,
+    "categoryId": 1,
+    "name": "Java Spring",
+    "price" : 300000.0,
+    "imageUrl": "https://drive.google.com/file/d/11zCmsgZCal6GoRIYhrU1Gj3lKuudkXx3/view?usp=sharing",
+    "description": "For Java Spring"
+  },
+  {
+    "id": 3,
+    "categoryId": 1,
+    "name": "Java Database",
+    "price" : 300000.0,
+    "imageUrl": "https://drive.google.com/file/d/1Xn1AK0dYAFnPcsfIIayxV_mZMqBpVDXL/view?usp=sharing",
+    "description": "For Database"
+  },
+  {
+    "id": 4,
+    "categoryId": 1,
+    "name": "Postgresql",
+    "price" : 300000.0,
+    "imageUrl": "https://drive.google.com/file/d/1t0QEQLB7JaYc0UhETjOI1vwdZrMETk_R/view?usp=sharing",
+    "description": "For Postgresql"
   }
-
 ]

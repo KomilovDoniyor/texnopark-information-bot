@@ -24,4 +24,12 @@ public class User {
     private String phoneNumber;
     private BotState botState;
 
+    public User(Long chatId, String firstname, String lastname, String username, String phoneNumber, BotState botState) {
+        this.chatId = chatId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.phoneNumber = phoneNumber;
+        this.botState = botState;
+    }
 }
