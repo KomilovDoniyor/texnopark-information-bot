@@ -15,8 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Subject {
     private Long id;
+    private Long categoryId;
     private String name;
     private Double price;
     private String imageUrl;
-    private String durationTime;
+    private String description;
 }

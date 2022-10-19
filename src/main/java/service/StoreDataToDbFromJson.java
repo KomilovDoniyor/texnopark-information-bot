@@ -7,10 +7,10 @@
 package service;
 
 import com.google.gson.Gson;
+import entity.Category;
 import entity.Subject;
-import entity.SubjectInfo;
-import service.impl.SubjectInfoServiceImpl;
 import service.impl.SubjectServiceImpl;
+import service.impl.CategoryServiceImpl;
 
 import java.io.*;
 import java.sql.SQLException;
@@ -23,27 +23,27 @@ public class StoreDataToDbFromJson {
     public static void store() throws SQLException {
         Gson gson = new Gson();
 
-        List<Subject> subjectList = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/main/resources/subject.json")))) {
-            Subject[] subjects = gson.fromJson(bufferedReader, Subject[].class);
-            subjectList.addAll(Arrays.asList(subjects));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/main/resources/category.json")))) {
+            Category[] subjects = gson.fromJson(bufferedReader, Category[].class);
+            categories.addAll(Arrays.asList(subjects));
         } catch (IOException io) {
             io.printStackTrace();
         }
 
-        SubjectService subjectService = new SubjectServiceImpl();
-        subjectService.saveAll(subjectList);
+        CategoryService categoryService = new CategoryServiceImpl();
+        categoryService.saveAll(categories);
 
-        List<SubjectInfo> subjectInfoList = new ArrayList<>();
+        List<Subject> subjectInfoList = new ArrayList<>();
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/main/resources/subjectInfo.json")))) {
-            SubjectInfo[] subjectInfos = gson.fromJson(bufferedReader, SubjectInfo[].class);
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("src/main/resources/subject.json")))) {
+            Subject[] subjectInfos = gson.fromJson(bufferedReader, Subject[].class);
             subjectInfoList.addAll(Arrays.asList(subjectInfos));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SubjectInfoService subjectInfoService = new SubjectInfoServiceImpl();
-        subjectInfoService.saveAll(subjectInfoList);
+        SubjectService subjectService = new SubjectServiceImpl();
+        subjectService.saveAll(subjectInfoList);
     }
 }

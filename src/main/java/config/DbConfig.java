@@ -15,7 +15,7 @@ public class DbConfig {
 
     static {
         try {
-            connection = DbConfig.connect("nukus-texnopark-info-db");
+            connection = DbConfig.connect("texnopark-information-db");
         } catch (SQLException e) {
             e.printStackTrace();
         }

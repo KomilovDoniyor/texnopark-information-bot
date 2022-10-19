@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="nukus-texnopark-info-db@localhost" uuid="3a708a06-379b-400a-9683-41271db54100">
+    <data-source source="LOCAL" name="texnopark-information-db@localhost" uuid="f9b808dc-25e9-405b-a705-82d02be49ded">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/nukus-texnopark-info-db</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/texnopark-information-db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

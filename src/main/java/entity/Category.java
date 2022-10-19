@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubjectInfo {
+public class Category {
     private Long id;
+    private String prefix;
     private String name;
-    private String imageUrl;
-    private String description;
 }
