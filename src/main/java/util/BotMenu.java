@@ -9,4 +9,6 @@ public interface BotMenu {
 
     String SETTINGS = "⚙️SOZLAMALAR";
 
+    String LOCATION = "\uD83D\uDCCDMANZIL";
+
 }

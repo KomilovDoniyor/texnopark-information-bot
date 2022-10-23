@@ -11,10 +11,12 @@ import entity.Subject;
 import entity.User;
 import enums.BotState;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
+import org.telegram.telegrambots.meta.api.objects.Location;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -31,9 +33,8 @@ import service.impl.UserServiceImpl;
 import service.impl.CategoryServiceImpl;
 import util.BotConstans;
 import util.BotMenu;
+import util.SendPhotoDescription;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -70,6 +71,7 @@ public class BotService {
 
         KeyboardRow keyboardRow2 = new KeyboardRow();
         keyboardRow2.add(new KeyboardButton(BotMenu.SETTINGS));
+        keyboardRow2.add(new KeyboardButton(BotMenu.LOCATION));
         rows.add(keyboardRow2);
 
         replyKeyboardMarkup.setKeyboard(rows);
@@ -154,7 +156,6 @@ public class BotService {
         editMessageText.setMessageId(message.getMessageId());
         editMessageText.setParseMode(ParseMode.MARKDOWN);
         editMessageText.setText(BotConstans.MENE_HEADER);
-
         editMessageText.setReplyMarkup(getInlineKeyboardsSubject(subjectList));
         return editMessageText;
     }
@@ -184,6 +185,12 @@ public class BotService {
             inlineKeyboards.add(buttons);
         }
 
+        InlineKeyboardButton button3 = new InlineKeyboardButton("Ma'lumot");
+        button3.setCallbackData("information");
+        buttons = new ArrayList<>();
+        buttons.add(button3);
+        inlineKeyboards.add(buttons);
+
         inlineKeyboardMarkup.setKeyboard(inlineKeyboards);
         return inlineKeyboardMarkup;
     }
@@ -198,7 +205,86 @@ public class BotService {
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(message.getChatId());
         sendPhoto.setPhoto(new InputFile(subject.getImageUrl()));
-        sendPhoto.setCaption("gfgzgfdgf");
+        switch (subject.getName()) {
+            case "Java":
+                sendPhoto.setCaption(subject.getName() + "-" + SendPhotoDescription.JAVA_CORE_DESC);
+                break;
+            case "Java Spring":
+                sendPhoto.setCaption(subject.getName() + "-" + SendPhotoDescription.JAVA_SPRING);
+                break;
+            case "Java Database":
+                sendPhoto.setCaption(subject.getName() + "-" + SendPhotoDescription.JAVA_DATABASE);
+                break;
+            case "Postgresql":
+                sendPhoto.setCaption(subject.getName() + "-" + SendPhotoDescription.POSTGRESQL);
+                break;
+        }
+        sendPhoto.setReplyMarkup(getInlineKeyboardsBack());
         return sendPhoto;
+    }
+
+    private static ReplyKeyboard getInlineKeyboardsBack() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> inlineKeyboards = new ArrayList<>();
+        List<InlineKeyboardButton> buttons = new ArrayList<>();
+
+        String text = "ORQAGA\uD83D\uDD19";
+
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText(text);
+        button.setCallbackData("back");
+
+        buttons.add(button);
+
+        inlineKeyboards.add(buttons);
+        inlineKeyboardMarkup.setKeyboard(inlineKeyboards);
+        return inlineKeyboardMarkup;
+    }
+
+    public static SendLocation location(Update update) {
+        SendLocation sendLocation = new SendLocation();
+        sendLocation.setChatId(update.getMessage().getChatId());
+        sendLocation.setLongitude(59.60428023307573);
+        sendLocation.setLatitude(42.457828167141926);
+        return sendLocation;
+    }
+
+    public static SendMessage defaultInformation(Update update) {
+        Long chatId = update.getMessage().getChatId();
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setParseMode(ParseMode.MARKDOWN);
+        sendMessage.setText(BotConstans.DEFAULT_INFORMATION);
+        return sendMessage;
+    }
+
+    public static EditMessageText informationSubject(Message message) {
+        EditMessageText editMessageText = new EditMessageText();
+        editMessageText.setChatId(message.getChatId());
+        editMessageText.setMessageId(message.getMessageId());
+        editMessageText.setParseMode(ParseMode.MARKDOWN);
+        editMessageText.setText(BotConstans.INFORMATION_SUBJECT);
+        editMessageText.setReplyMarkup(getInlineKeyboardsInformation());
+
+        return editMessageText;
+    }
+
+    private static InlineKeyboardMarkup getInlineKeyboardsInformation() {
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> inlineKeyboards = new ArrayList<>();
+        List<InlineKeyboardButton> buttons = new ArrayList<>();
+
+        String text = "ORQAGA\uD83D\uDD19";
+
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText(text);
+        button.setCallbackData("course");
+
+        buttons.add(button);
+
+        inlineKeyboards.add(buttons);
+        inlineKeyboardMarkup.setKeyboard(inlineKeyboards);
+        return inlineKeyboardMarkup;
     }
 }
