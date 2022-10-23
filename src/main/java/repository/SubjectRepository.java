@@ -1,9 +1,3 @@
-/**
- * Author: komiloff_doniyor2505@gmail.com
- * Date:10/7/2022
- * Time:4:11 PM
- * Project Name:texnopark-information-bot
- */
 package repository;
 
 import entity.Subject;
@@ -21,4 +15,5 @@ public interface SubjectRepository {
 
     Subject findById(Long id) throws SQLException;
 
+    List<Subject> findAllCategoryId(long categoryId) throws SQLException;
 }

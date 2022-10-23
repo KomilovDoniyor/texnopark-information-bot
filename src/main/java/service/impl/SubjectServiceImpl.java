@@ -1,7 +1,7 @@
 /**
  * Author: komiloff_doniyor2505@gmail.com
  * Date:10/7/2022
- * Time:4:08 PM
+ * Time:4:43 PM
  * Project Name:texnopark-information-bot
  */
 package service.impl;
@@ -12,10 +12,16 @@ import repository.impl.SubjectRepositoryImpl;
 import service.SubjectService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectServiceImpl implements SubjectService {
     public static SubjectRepository subjectRepository = new SubjectRepositoryImpl();
+
+    @Override
+    public void saveAll(List<Subject> subjectList) throws SQLException {
+        subjectRepository.saveAll(subjectList);
+    }
 
     @Override
     public Subject save(Subject subject) {
@@ -23,8 +29,8 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void saveAll(List<Subject> subjectList) throws SQLException {
-        subjectRepository.saveAll(subjectList);
+    public Subject findById(Long id) throws SQLException {
+        return subjectRepository.findById(id);
     }
 
     @Override
@@ -33,7 +39,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject findById(Long id) {
-        return null;
+    public List<Subject> findAllCategoryId(long categoryId) throws SQLException {
+        return subjectRepository.findAllCategoryId(categoryId);
     }
 }
